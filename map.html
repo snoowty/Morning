@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<style>
+#map-canvas {
+	width: 600px ;
+	height: 600px ;
+}
+	</style>
+</head>
+<body>
+	<!-- canvas -->
+	<div id="map-canvas"></div>
+
+	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAcfJlyepF2RtZ32liYdm8-PMTI0UYHhTY"></script>
+	<script>
+var mapDiv = document.getElementById( "map-canvas" ) ;
+
+// 地図のオプション
+var mapOptions = {
+	center: new google.maps.LatLng( 35.7100, 139.8107 ) ,	// 位置座標
+	zoom: 11 ,	// ズーム値
+} ;
+
+var map = new google.maps.Map( mapDiv , mapOptions ) ;
+	</script>
+</body>
+</html>
