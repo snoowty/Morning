@@ -1,6 +1,7 @@
 #include <iostream>
 #include <vector>
 #include <map>
+#include <algorithm>
 using namespace std;
 
 int main() {
@@ -16,7 +17,14 @@ int main() {
     }
   }
 
-  int judge, cnt = 0, min = 10;
+  if(n == 1) {
+    cout << 1 << endl;
+    return 0;
+  }
+
+  
+  int judge, cnt = 0;
+  vector <int> ju;
   for(int i = 0; i < f.size(); i++){
     // cout << f[i].first << " " << f[i].second << endl;
     if(f[i].first > f[i].second){
@@ -24,18 +32,22 @@ int main() {
     }else{
       judge = f[i].second;
     }
-    // cout << "judge: " << judge << endl;
-    while(judge != 0){
-      judge = judge/10;
-      cnt++;
-    }
-    if(min > cnt) min = cnt;
-    cnt = 0;
+    ju.push_back( judge );
   }
-  
-  // n = 1の場合
-  if(min == 10) min = 1;
-  cout << min << endl;
+  int ju_min = *min_element(ju.begin(), ju.end());
+  // cout << "judge: " << judge << endl;
+  while(ju_min != 0){
+    ju_min = ju_min/10;
+    cnt++;
+  }
+  cout << cnt << endl;
+  //   if(min > cnt) min = cnt;
+  //   cnt = 0;
+  //
+  //
+  // // n = 1の場合
+  // if(min == 10) min = 1;
+  // cout << min << endl;
 
   return 0;
 }
