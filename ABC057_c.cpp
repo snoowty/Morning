@@ -32,7 +32,9 @@ int main() {
     if(min > cnt) min = cnt;
     cnt = 0;
   }
-
+  
+  // n = 1の場合
+  if(min == 10) min = 1;
   cout << min << endl;
 
   return 0;
