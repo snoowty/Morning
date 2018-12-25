@@ -18,29 +18,29 @@ int main() {
     }
   }
 
-  if(n == 1) {
-    cout << 1 << endl;
-    return 0;
-  }
+  // if(n == 1) {
+  //   cout << 1 << endl;
+  //   return 0;
+  // }
 
 
   ll judge;
   int cnt = 0;
   vector <ll> ju;
   for(int i = 0; i < f.size(); i++){
-     // cout << f[i].first << " " << f[i].second << endl;
+      cout << f[i].first << " " << f[i].second << endl;
     if(f[i].first > f[i].second){
       judge = f[i].first;
     }else{
       judge = f[i].second;
     }
     ju.push_back( judge );
-    // cout << judge << endl;
+     cout << judge << endl;
   }
-//   cout << "ju" << endl;
-// for(int k = 0; k < ju.size(); k++) {
-//   cout << ju[k] << endl;
-// }
+   cout << "ju" << endl;
+ for(int k = 0; k < ju.size(); k++) {
+   cout << ju[k] << endl;
+ }
 
   int ju_min = *min_element(ju.begin(), ju.end());
   // cout << "ju_min: " << ju_min << endl;
