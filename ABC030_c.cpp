@@ -10,10 +10,45 @@ int main() {
 
   int a[n], b[m];
   for(int i = 0; i < n; i++) cin >> a[i];
-  for(int i = 0; i < m; i++) cin >> b[m];
+  for(int i = 0; i < m; i++) cin >> b[i];
 
-  int time = a[0] - x;
-  for(int i = 0; i < n+m; i = i + 2) {
-    
+  // for(int i = 0; i < n; i++) cout << a[i] << endl;
+
+  // 現在時刻 time
+  int time = a[0];
+  // cout << time << endl;
+  // 往復回数　cnt
+  int cnt = 0;
+  while(1) {
+    time += x;
+    // cout << "x++:" << time << endl;
+    for(int i = 0; i < m; i++) {
+      if(time <= b[i]) {
+        time = b[i];
+        // cout << "b[i] :" << time << endl;
+        break;
+      }
+      if(time > b[m-1]) {
+        cout << cnt << endl;
+        return 0;
+      }
+    }
+
+    time += y;
+    cnt++;
+    // cout << "y++:" << time << endl;
+    for(int i = 0; i < n; i++) {
+      if(time <= a[i]) {
+        time = a[i];
+        // cout << "a[i] :" << time << endl;
+        break;
+      }
+      if(time > a[n-1]) {
+        cout << cnt << endl;
+        return 0;
+      }
+    }
   }
+
+  // cout << cnt << endl;
 }
