@@ -62,7 +62,7 @@ int main() {
             // 上
             if(!(f == 0)) {
               // cout << "log上" << endl;
-              if(reached[f-1][s] == false && numStr[f-1].at(s) == '1') que.push(pair<int, int>(f+1, s));
+              if(reached[f-1][s] == false && numStr[f-1].at(s) == '1') que.push(pair<int, int>(f-1, s));
             }
             // 下
             if(!(f == N-1)) {
