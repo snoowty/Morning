@@ -1,8 +1,8 @@
-#include <iostream>
+// #include <iostream>
 #include <stdio.h>
 #include <queue>
-#include <string>
-#include <vector>
+// #include <string>
+// #include <vector>
 
 using namespace std;
 
@@ -16,9 +16,11 @@ int main() {
     if(h == 0 && w == 0) break;
 
     // 果樹園の地図を作成
-    vector<string> str(h);
+    // vector<string> str(h);
+    char str[h][w];
     for(int i = 0; i < h; i++) {
-      cin >> str[i];
+      // cin >> str[i];
+      scanf("%s", &str[i]);
     }
 
     // reachedを作成
@@ -44,7 +46,8 @@ int main() {
             int f = que.front().first;
             int s = que.front().second;
             // その区画の果樹の種類を保存する。
-            char orchard = str[f].at(s);
+            // char orchard = str[f].at(s);
+            char orchard = str[f][s];
             // 探索した果樹園をtrueにする。
             reached[f][s] = true;
             que.pop();
@@ -52,28 +55,29 @@ int main() {
             // 右
             if(!(s == w-1)) {
               // cout << "log右" << endl;
-              if(reached[f][s+1] == false && str[f].at(s+1) == orchard) que.push(pair<int, int>(f, s+1));
+              if(reached[f][s+1] == false && str[f][s+1] == orchard) que.push(pair<int, int>(f, s+1));
             }
             // 左
             if(!(s == 0)) {
               // cout << "log左" << endl;
-              if(reached[f][s-1] == false && str[f].at(s-1) == orchard) que.push(pair<int, int>(f, s-1));
+              if(reached[f][s-1] == false && str[f][s-1] == orchard) que.push(pair<int, int>(f, s-1));
             }
             // 上
             if(!(f == 0)) {
               // cout << "log上" << endl;
-              if(reached[f-1][s] == false && str[f-1].at(s) == orchard) que.push(pair<int, int>(f-1, s));
+              if(reached[f-1][s] == false && str[f-1][s] == orchard) que.push(pair<int, int>(f-1, s));
             }
             // 下
             if(!(f == h-1)) {
               // cout << "log下" << endl;
-              if(reached[f+1][s] == false && str[f+1].at(s) == orchard) que.push(pair<int, int>(f+1, s));
+              if(reached[f+1][s] == false && str[f+1][s] == orchard) que.push(pair<int, int>(f+1, s));
             }
           }
         }
       }
     }
-    cout << cnt << endl;
+    // cout << cnt << endl;
+    printf("%d\n", cnt);
   }
 
 }
