@@ -8,8 +8,8 @@ using namespace std;
 void solve();
 
 int N, W;
-int v[MAX_N + 1], w[MAX_M + 1];
-int dp[MAX_N + 1][MAX_M + 1];
+int v[MAX_N + 1], w[MAX_N + 1];
+long int dp[MAX_N + 1][MAX_M + 1];
 
 int main() {
 
