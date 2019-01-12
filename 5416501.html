@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>だんご三兄弟</title>
+  <script src="three.min.js"></script>
+  <style type="text/css">
+  div#canvas-frame{
+    border: none;
+    cursor: pointer;
+    width: 600px;
+    height: 600px;
+    background-color: #EEEEEE;
+  }
+</style>
+<script>
+var width, height;
+var renderer;
+function initThree() {
+  width = document.getElementById('canvas-frame').clientWidth;
+  height = document.getElementById('canvas-frame').clientHeight;
+  renderer = new THREE.WebGLRenderer({antialias: true});
+  renderer.setSize(width, height );
+  document.getElementById('canvas-frame').appendChild(renderer.domElement);
+  renderer.setClearColorHex(0xFFFFFF, 1.0);
+}
+
+var camera;
+function initCamera() {
+  camera = new THREE.PerspectiveCamera( 45 , width / height , 1 , 10000 );
+  camera.position.x = 100;
+  camera.position.y = 20;
+  camera.position.z = 50;
+  camera.up.x = 0;
+  camera.up.y = 0;
+  camera.up.z = 1;
+  camera.lookAt( {x:0, y:0, z:0 } );
+}
+var scene;
+function initScene() {
+  scene = new THREE.Scene();
+}
+var light;
+function initLight() {
+  light = new THREE.DirectionalLight(0xFFFFFF, 1.5, 0);
+  light.position.set( 50, 100, 100 );
+  scene.add(light);
+}
+//   var light2;
+//   function initLight() {
+//     light2 = new THREE.DirectionalLight(0xFFFFFF, 1.5, 0);
+//     light2.position.set( -50, -100, -100 );
+//     scene.add(light2);
+// }
+var sphere, sphere2, sphere3, cylinder, cube, eye;
+function initObject(){
+  sphere3 = new THREE.Mesh(
+    new THREE.SphereGeometry(10,10,10),
+    new THREE.MeshLambertMaterial({color: 0xFFEF85})
+  );
+  scene.add(sphere3);
+  sphere3.position.set(0,0,-15);
+
+  sphere = new THREE.Mesh(
+    new THREE.SphereGeometry(10,10,10),
+    new THREE.MeshLambertMaterial({color: 0xFFEF85})
+  );
+  scene.add(sphere);
+  sphere.position.set(0,0,0);
+
+  sphere2 = new THREE.Mesh(
+    new THREE.SphereGeometry(10,10,10),
+    new THREE.MeshLambertMaterial({color: 0xFFEF85})
+  );
+  scene.add(sphere2);
+  sphere2.position.set(0,0,15);
+
+  // cylinder = new THREE.Mesh(
+  //   new THREE.CylinderGeometry(5,5,5,5),
+  //   new THREE.MeshLambertMaterial({color: 0x0000ff})
+  // );
+  // scene.add(cylinder);
+  // cylinder.position.set(0,20,0);
+
+  cube = new THREE.Mesh(
+    new THREE.CubeGeometry(2,2,60),                //形状の設定
+    new THREE.MeshLambertMaterial({color: 0x000000}) //材質の設定
+  );
+  scene.add(cube);
+  cube.position.set(0,0,0);
+
+  // eye = new THREE.Mesh(
+  //      new THREE.SphereGeometry(10,10,10),
+  //      new THREE.MeshLambertMaterial({color: 0x000000})
+  // );
+  // scene.add(eye);
+  // eye.position.set(0,0,-15);
+}
+
+var t=0;
+function loop() {
+  t++;
+  renderer.clear();
+  // cube[0].rotation.set( t/100, 0, 0 );
+  // cube[1].rotation.set( 0, t/100, 0 );
+  // cube[2].rotation.set( 0, 0, t/100 );
+  camera.position.set( 50*Math.cos(t/100), 100*Math.sin(t/200), 100*Math.cos(t/50));
+  camera.lookAt( {x:0, y:0, z:0 } );
+  renderer.render(scene, camera);
+  window.requestAnimationFrame(loop);
+}
+function threeStart() {
+  initThree();
+  initCamera();
+  initScene();
+  initLight();
+  initObject();
+  // renderer.clear();
+  // renderer.render(scene, camera);
+  loop();
+}
+</script>
+</head>
+
+<body onload="threeStart();">
+  <div id="canvas-frame"></div>
+</body>
+</html>
