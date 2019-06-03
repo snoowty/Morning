@@ -1,5 +1,4 @@
 #include <iostream>
-
 using namespace std;
 
 int fib(int n);
@@ -8,18 +7,14 @@ int memo[45];
 
 int main() {
   int n;
-
   //入力
   cin >> n;
-
   // 出力
   cout << fib(n) << endl;
-
   return 0;
 }
 
 int fib(int n){
-
   if(n == 0) return 1;
   else if(n == 1) return 1;
   else if(memo[n] != 0) return memo[n];
