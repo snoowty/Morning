@@ -1,0 +1,60 @@
+%このサンプルは過去の先輩が残してくれたものに，一部修正を加えたものです．
+
+
+\documentclass[a4paper, twoside]{jarticle}
+% a4paper : A4のサイズに設定
+% twoside : 偶数/奇数ページで異なるレイアウト，bookのデフォルト．
+
+\usepackage{tani_resume} % 卒論用
+\usepackage{ascmac} % レイアウトを綺麗にする
+\usepackage{comment} % 複数行のコメントを使用できる
+
+% 先輩方が全員記述しているため，記述した，検索しても用途が不明
+% --- ここから ---
+\alignbeforeskip -5mm
+\alignafterskip -5mm
+\eqnarraybeforeskip -5mm
+\eqnarrayafterskip -5mm
+% --- ここまで ---
+
+/jptitle{タイトルを書く} % タイトル
+\etitle{} % 空白で構わない
+\jpauthor{日大 太郎} % 名前
+\eauthor{Nichidai Taro} % 名前(ローマ字)
+\course{谷聖一 研究室} % {谷聖一 研究室}で良い
+\h_year{30} % 自分たちの代の年度
+%多分これを見る頃には平成じゃなくなっているので誰かtani_reusme.styを変更する必要あり
+
+\abstract{ % 概要
+概要を書きましょう．
+}
+
+% 右上に最終更新時刻を表示する，バックアップを見返す際に便利
+% 先輩方は完成時にはコメントアウトしている
+\compheading % 最終更新時刻
+
+
+\begin{document} % 文書(開始)
+\maketitle % タイトルを表示する
+\begin{multicols}{2} % 2段落にする(開始)
+\setcounter{page}{1} % ページ開始番号
+
+\section{はじめに}
+ここには「はじめに」を書きます
+\subsection{何か書く}
+副題ですね
+
+\section{何か書く}
+次の内容を書きます
+\subsection{何か書く}
+次の内容の副題ですね
+
+
+
+
+% multicols を end したあとに参考文献
+\begin{thebibliography}{99}
+\end{thebibliography}
+\end{multicols} % 2段落にする(終了)
+
+\end{document} % 文書(終了)
